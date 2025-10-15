@@ -11,3 +11,12 @@ Gunakan perintah ini untuk melihat perubahan apa saja yang terjadi di folder pro
 
 ```bash
 git status
+
+---
+
+## 🪄 1. Cek Status Proyek
+
+Gunakan perintah ini untuk melihat perubahan apa saja yang terjadi di folder proyek kamu.
+
+```bash
+git status
