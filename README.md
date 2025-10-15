@@ -1,22 +1,24 @@
-# 🧠 Panduan Menggunakan Git di Android Studio (Kotlin)
+# 🧠 Panduan Menggunakan Git di Android Studio
 
-README ini menjelaskan langkah-langkah dasar untuk mengelola proyek Android Studio menggunakan **Git** dan **GitHub**.  
-Cocok banget buat kamu yang baru mulai pakai Git di project Kotlin atau Android!
-
----
-
-## 🪄 1. Cek Status Proyek
-
-Gunakan perintah ini untuk melihat perubahan apa saja yang terjadi di folder proyek kamu.
-
-```bash
-git status
+Panduan ini menjelaskan langkah-langkah dasar menggunakan **Git** di Android Studio untuk mengelola versi proyek Kotlin atau Android kamu.  
+Dengan Git, kamu bisa menyimpan setiap perubahan, bekerja dalam tim, dan mengunggah proyekmu ke **GitHub**.
 
 ---
 
-## 🪄 1. Cek Status Proyek
+## ⚙️ Persiapan Awal
 
-Gunakan perintah ini untuk melihat perubahan apa saja yang terjadi di folder proyek kamu.
+Sebelum mulai, pastikan:
+1. Kamu sudah **menginstal Git** di komputer.  
+   🔗 [Download Git](https://git-scm.com/downloads)
+2. Sudah memiliki **akun GitHub**.
+3. Android Studio kamu sudah terhubung ke Git.
+
+---
+
+## 🪄 1. Inisialisasi Repository
+
+Jika proyekmu belum menggunakan Git, jalankan perintah ini di Terminal Android Studio:
 
 ```bash
-git status
+git init
+
