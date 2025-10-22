@@ -5,6 +5,8 @@ Dengan Git, kamu bisa menyimpan setiap perubahan, bekerja dalam tim, dan mengung
 
 ---
 
+NICE
+
 ```bash
 
 ⚙️ Persiapan Awal
