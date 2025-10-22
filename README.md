@@ -5,7 +5,7 @@ Dengan Git, kamu bisa menyimpan setiap perubahan, bekerja dalam tim, dan mengung
 
 ---
 
-NICE
+NICE GOOD
 
 ```bash
 
