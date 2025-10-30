@@ -105,4 +105,5 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
             }
         }
     }
+
 }
