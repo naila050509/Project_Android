@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.project_kelompok_3"
-    compileSdk = 35
+    compileSdk = 36 // 35 -> 36
 
     defaultConfig {
         applicationId = "com.example.project_kelompok_3"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36 // 35 -> 36
         versionCode = 1
         versionName = "1.0"
 
@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
