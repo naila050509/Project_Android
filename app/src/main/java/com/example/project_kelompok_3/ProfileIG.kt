@@ -49,7 +49,7 @@ fun ProfileScreen() {
         ) {
             // Profile Picture
             Image(
-                painter = painterResource(id = R.drawable.kotlin), // add image in res/drawable
+                painter = painterResource(id = R.drawable.bunnyhopscottmascot), // add image in res/drawable
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(90.dp)
@@ -92,8 +92,8 @@ fun ProfileScreen() {
 
         // --- Grid of Posts ---
         val images = listOf(
-            R.drawable.kotlin, R.drawable.kotlin, R.drawable.kotlin,
-            R.drawable.kotlin, R.drawable.kotlin, R.drawable.kotlin
+            R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot,
+            R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot
         )
 
         LazyVerticalGrid(
