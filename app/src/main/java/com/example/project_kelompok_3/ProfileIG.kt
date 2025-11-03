@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project_kelompok_3.ui.theme.ProjectKelompok3Theme
 
+
 @Composable
 fun ProfileScreen() {
     Spacer(modifier = Modifier.height(16.dp))
@@ -128,7 +129,7 @@ fun StatItem(number: String, label: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun ProfilePreview() {
+fun ProfilePreview(){
     ProjectKelompok3Theme {
         ProfileScreen()
     }

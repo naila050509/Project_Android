@@ -1,3 +1,7 @@
+03/11/2025:
+Turns out if "ProjectKelompok3Theme" try file -> invalidate caches. If that doesn't do nothing then do file -> Sync Project with Gradle Files. 
+If that doesn't work either then try to comment the "ProjectKelompok3Theme", then type it again. Do not do copy and paste, won't work at all.
+
 31/10/2025:
 Tutorial cara menggunakan branch di github dan android studio: 
 1) Buka android studio. 
