@@ -82,8 +82,9 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier, // Ini cuman memanggil modifier supaya tidak ada warning
         topBar = {
-            if (selectedTab == 3) {
-                InstagramTopBar()
+            when (selectedTab) {
+                0 -> HomeIG()
+                3 -> InstagramTopBar()
             }
         },
         bottomBar = {
@@ -101,6 +102,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (selectedTab) {
+                0 -> HomeIG()
                 3 -> ProfileScreen()
             }
         }
