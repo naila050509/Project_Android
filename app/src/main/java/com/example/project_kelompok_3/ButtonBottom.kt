@@ -118,7 +118,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
         modifier = modifier, // Ini cuman memanggil modifier supaya tidak ada warning
         topBar = {
             when (selectedTab) {
-                0 -> HomeIG()
+                0 -> HomeTopBar()
                 3 -> InstagramTopBar()
             }
         },

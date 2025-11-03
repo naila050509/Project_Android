@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -81,13 +82,37 @@ fun ProfileScreen() {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // --- Edit Profile Button ---
-        OutlinedButton(
-            onClick = {},
-            modifier = Modifier.fillMaxWidth()
+        // --- Profile Button ---
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Edit Profile")
+            OutlinedButton(
+                onClick = {},
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Edit Profile")
+            }
+            OutlinedButton(
+                onClick = {},
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("PIE")
+            }
+            OutlinedButton(
+                onClick = {},
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("FEMBOY")
+            }
         }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        HighlightsSection()
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -126,6 +151,42 @@ fun StatItem(number: String, label: String) {
         Text(text = label, fontSize = 13.sp, color = Color.Gray)
     }
 }
+
+@Composable
+fun HighlightsSection() {
+    val highlights = listOf(
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot
+    )
+
+    androidx.compose.foundation.lazy.LazyRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        items(highlights) { image ->
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Image(
+                    painter = painterResource(id = image),
+                    contentDescription = "Highlight",
+                    modifier = Modifier
+                        .size(70.dp)
+                        .clip(CircleShape)
+                        .border(2.dp, Color.Gray, CircleShape),
+                    contentScale = ContentScale.Crop
+                )
+                Text("Story", fontSize = 12.sp)
+            }
+        }
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable

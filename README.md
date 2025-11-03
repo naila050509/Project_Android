@@ -1,4 +1,7 @@
-# 03/11/2025:
+# 03/11/2025: (15:30)
+&emsp; Aku telah memberikan system baru di ProfileIG.kt, namun aku masih butuh mengasih system seperti di ig yakni yang 4 tombol dibawah highlighted.
+
+# 03/11/2025: (13:00)
 &emsp;Turns out if "ProjectKelompok3Theme" try file -> invalidate caches. If that doesn't do nothing then do file -> Sync Project with Gradle Files. If that doesn't work either then try to comment the "ProjectKelompok3Theme", then type it again. Do not do copy and paste, won't work at all.
 
 # 31/10/2025:&emsp;
