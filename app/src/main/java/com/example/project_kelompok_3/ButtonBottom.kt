@@ -3,11 +3,16 @@ package com.example.project_kelompok_3
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Send
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.VideoLibrary
@@ -60,6 +65,36 @@ fun InstagramTopBar() {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeTopBar() {
+    TopAppBar(
+        title = {
+            Text(
+                text = "Home",
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp
+            )
+        },
+        actions = {
+            Row {
+                IconButton(onClick = { /* aksi Likes */ }) {
+                    Icon(
+                        Icons.Outlined.FavoriteBorder,
+                        contentDescription = "Likes"
+                    )
+                }
+                Spacer(modifier = Modifier.width(2.dp)) // jarak antar icon
+                IconButton(onClick = { /* aksi Send */ }) {
+                    Icon(
+                        Icons.Filled.Send,
+                        contentDescription = "Send"
+                    )
+                }
+            }
+        }
+    )
+}
 
 @Composable
 fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
