@@ -1,5 +1,5 @@
-# 03/11/2025:&emsp;
-Turns out if "ProjectKelompok3Theme" try file -> invalidate caches. If that doesn't do nothing then do file -> Sync Project with Gradle Files. If that doesn't work either then try to comment the "ProjectKelompok3Theme", then type it again. Do not do copy and paste, won't work at all.
+# 03/11/2025:
+&emsp;Turns out if "ProjectKelompok3Theme" try file -> invalidate caches. If that doesn't do nothing then do file -> Sync Project with Gradle Files. If that doesn't work either then try to comment the "ProjectKelompok3Theme", then type it again. Do not do copy and paste, won't work at all.
 
 # 31/10/2025:&emsp;
 Tutorial cara menggunakan branch di github dan android studio: 
@@ -14,5 +14,5 @@ Tutorial cara menggunakan branch di github dan android studio:
 Note: Kalau masih di folder aplikasi yang lain, tinggal ke file -> close project
 
 
-# 30/10/2025:&emsp;
-build.gradle.kts -> compileSdk dan targetSdk telah diubah dari 35 ke 36. Dan mendownload SDK Manager Android 14 (Level 34) dan Android 15 (35). Bisa... berhasil sih dengan file yang tidak 99,9999% kemungkinan eror karena gambarnya kucing yang agak aneh.
+# 30/10/2025:
+&emsp;build.gradle.kts -> compileSdk dan targetSdk telah diubah dari 35 ke 36. Dan mendownload SDK Manager Android 14 (Level 34) dan Android 15 (35). Bisa... berhasil sih dengan file yang tidak 99,9999% kemungkinan eror karena gambarnya kucing yang agak aneh.
