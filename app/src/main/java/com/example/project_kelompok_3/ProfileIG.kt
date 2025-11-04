@@ -1,27 +1,16 @@
 package com.example.project_kelompok_3
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,9 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project_kelompok_3.ui.theme.ProjectKelompok3Theme
 
-
 @Composable
 fun ProfileScreen() {
+    var selectedTab by remember { mutableStateOf("Posts") }
+
     Spacer(modifier = Modifier.height(16.dp))
     Column(
         modifier = Modifier
@@ -44,14 +34,13 @@ fun ProfileScreen() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // --- Header: Profile Picture and Stats ---
+//  ------ Profile Picture User ----
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            // Profile Picture
             Image(
-                painter = painterResource(id = R.drawable.bunnyhopscottmascot), // add image in res/drawable
+                painter = painterResource(id = R.drawable.bunnyhopscottmascot),
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(90.dp)
@@ -62,7 +51,7 @@ fun ProfileScreen() {
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // Stats
+//  ------ Statistika Milik User ----
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
@@ -75,14 +64,14 @@ fun ProfileScreen() {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // --- Username & Bio ---
+//  ------ Nama dan bio data user  ----
         Text("SeaShanty", fontWeight = FontWeight.Bold, fontSize = 18.sp)
-        Text("Ocean-inspired clothing ", fontSize = 14.sp)
+        Text("Ocean-inspired clothing", fontSize = 14.sp)
         Text("www.seashanty.com", color = Color.Blue, fontSize = 13.sp)
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // --- Profile Button ---
+//  ------ Tombol Untuk Pemilik User  ----
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -93,104 +82,158 @@ fun ProfileScreen() {
             OutlinedButton(
                 onClick = {},
                 modifier = Modifier.weight(1f)
-            ) {
-                Text("Edit Profile")
-            }
+            ) { Text("Edit Profile") }
+
             OutlinedButton(
                 onClick = {},
                 modifier = Modifier.weight(1f)
-            ) {
-                Text("PIE")
-            }
+            ) { Text("PIE") }
+
             OutlinedButton(
                 onClick = {},
                 modifier = Modifier.weight(1f)
-            ) {
-                Text("FEMBOY")
-            }
+            ) { Text("FEMBOY") }
         }
 
         Spacer(modifier = Modifier.height(12.dp))
 
+//  ------ Highlights  ----
         HighlightsSection()
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // --- Grid of Posts ---
-        val images = listOf(
-            R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot,
-            R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot, R.drawable.bunnyhopscottmascot
-        )
-
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(3),
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(2.dp),
-            horizontalArrangement = Arrangement.spacedBy(2.dp)
+//  ------ Tombol Untuk Semua User ----
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            items(images) { image ->
-                Image(
-                    painter = painterResource(id = image),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .aspectRatio(1f)
-                        .fillMaxWidth(),
-                    contentScale = ContentScale.Crop
-                )
-            }
+            TabButton("Posts", selectedTab) { selectedTab = "Posts" }
+            TabButton("Reels", selectedTab) { selectedTab = "Reels" }
+            TabButton("Tagged", selectedTab) { selectedTab = "Tagged" }
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+    //  ------ Isi Content Berdasarkan Tombol Diclick  ----
+        when (selectedTab) {
+            "Posts" -> PostGrid()
+            "Reels" -> ReelsSection()
+            "Tagged" -> TaggedSection()
         }
     }
 }
 
+
+//  ------ Styling Isi Untuk Statistika Milik User ----
 @Composable
 fun StatItem(number: String, label: String) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = number, fontWeight = FontWeight.Bold, fontSize = 16.sp)
         Text(text = label, fontSize = 13.sp, color = Color.Gray)
     }
 }
 
+//  ------ Isi Untuk Highlights  ----
 @Composable
 fun HighlightsSection() {
+
+    //  ------ File Gambar beserta Nama hightlightsnya  ----
     val highlights = listOf(
-        R.drawable.bunnyhopscottmascot,
-        R.drawable.bunnyhopscottmascot,
-        R.drawable.bunnyhopscottmascot,
-        R.drawable.bunnyhopscottmascot,
-        R.drawable.bunnyhopscottmascot
+        Pair(R.drawable.bunnyhopscottmascot, "Trip"),
+        Pair(R.drawable.bunnyhopscottmascot, "Pets"),
+        Pair(R.drawable.bunnyhopscottmascot, "Family"),
+        Pair(R.drawable.bunnyhopscottmascot, "Work"),
+        Pair(R.drawable.bunnyhopscottmascot, "Friends")
     )
 
-    androidx.compose.foundation.lazy.LazyRow(
+    //  ------ Styling Untuk Setiap Highlight ----
+    LazyRow(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        items(highlights) { image ->
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+        items(highlights) { (image, name) ->
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Image(
                     painter = painterResource(id = image),
-                    contentDescription = "Highlight",
+                    contentDescription = "Highlight $name",
                     modifier = Modifier
                         .size(70.dp)
                         .clip(CircleShape)
                         .border(2.dp, Color.Gray, CircleShape),
                     contentScale = ContentScale.Crop
                 )
-                Text("Story", fontSize = 12.sp)
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(name, fontSize = 12.sp)
             }
         }
     }
 }
 
 
+//  ------ Tombol Untuk Semua User ----
+@Composable
+fun TabButton(
+    text: String,
+    selectedTab: String,
+    onClick: () -> Unit
+) {
+    val isSelected = text == selectedTab
+    TextButton(onClick = onClick) {
+        Text(
+            text,
+            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+            color = if (isSelected) Color.Black else Color.Gray
+        )
+    }
+}
+
+@Composable
+fun PostGrid() {
+    val posts = List(9) { R.drawable.bunnyhopscottmascot }
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+        horizontalArrangement = Arrangement.spacedBy(2.dp)
+    ) {
+        items(posts) { post ->
+            Image(
+                painter = painterResource(id = post),
+                contentDescription = null,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
+
+@Composable
+fun ReelsSection() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("🎬 Reels kamu akan tampil di sini", color = Color.Gray)
+    }
+}
+
+@Composable
+fun TaggedSection() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("🏷️ Postingan yang menandai kamu akan muncul di sini", color = Color.Gray)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
-fun ProfilePreview(){
+fun ProfilePreview() {
     ProjectKelompok3Theme {
         ProfileScreen()
     }
