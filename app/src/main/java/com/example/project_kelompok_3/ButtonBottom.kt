@@ -104,6 +104,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (selectedTab) {
+
                 3 -> ProfileScreen()
             }
         }
