@@ -41,38 +41,6 @@ data class BottomNavItem(
     val icon: @Composable () -> Unit
 )
 
-// ----- Top Bar Untuk Home Page -----
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun HomeTopBar() {
-    TopAppBar(
-        title = {
-            Text(
-                text = "Home",
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
-            )
-        },
-        actions = {
-            Row {
-                IconButton(onClick = { /* aksi Likes */ }) {
-                    Icon(
-                        Icons.Outlined.FavoriteBorder,
-                        contentDescription = "Likes"
-                    )
-                }
-                Spacer(modifier = Modifier.width(2.dp)) // jarak antar icon
-                IconButton(onClick = { /* aksi Send */ }) {
-                    Icon(
-                        Icons.Filled.Send,
-                        contentDescription = "Send"
-                    )
-                }
-            }
-        }
-    )
-}
-
 // ----- Top Bar Untuk Profile Instagram -----
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -122,7 +90,6 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
         modifier = modifier, // Ini cuman memanggil modifier supaya tidak ada warning
         topBar = {
             when (selectedTab) {
-                0 -> HomeTopBar()
                 3 -> InstagramTopBar()
             }
         },
@@ -141,7 +108,6 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (selectedTab) {
-                0 -> HomeIG()
                 3 -> ProfileScreen()
             }
         }
