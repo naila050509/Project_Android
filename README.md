@@ -1,5 +1,11 @@
+# 05/11/2025: (09:15)
+1) Saya telah menambahkan backup folder untuk file kotlin ProfileIG
+2) Saya telah mengembangkan system di ProfileIG
+3) Saya telah mengadakan fitur baru dan system baru lagi di ProfileIG
+4) Saya telah mengasih beberapa comment di beberapa bagian untuk gampang melihat dan mengedit part (Beberapa)
+
 # 03/11/2025: (15:30)
-&emsp; Aku telah memberikan system baru di ProfileIG.kt, namun aku masih butuh mengasih system seperti di ig yakni yang 4 tombol dibawah highlighted.
+&emsp; Saya telah memberikan system baru di ProfileIG.kt, namun saya masih butuh mengasih system seperti di ig yakni yang 4 tombol dibawah highlighted.
 
 # 03/11/2025: (13:00)
 &emsp;Turns out if "ProjectKelompok3Theme" try file -> invalidate caches. If that doesn't do nothing then do file -> Sync Project with Gradle Files. If that doesn't work either then try to comment the "ProjectKelompok3Theme", then type it again. Do not do copy and paste, won't work at all.

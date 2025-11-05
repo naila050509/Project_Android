@@ -3,6 +3,7 @@ package com.example.project_kelompok_3
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -24,112 +25,80 @@ import androidx.compose.ui.unit.sp
 import com.example.project_kelompok_3.ui.theme.ProjectKelompok3Theme
 
 @Composable
-fun ProfileScreen() {
-    var selectedTab by remember { mutableStateOf("Posts") }
-
-    Spacer(modifier = Modifier.height(16.dp))
-    Column(
-        modifier = Modifier
-            .padding(top = 20.dp)
-            .fillMaxSize()
-            .padding(16.dp)
+fun ProfileHeader() {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth()
     ) {
-//  ------ Profile Picture User ----
+        Image(
+            painter = painterResource(id = R.drawable.bunnyhopscottmascot),
+            contentDescription = "Profile Picture",
+            modifier = Modifier
+                .size(90.dp)
+                .clip(CircleShape)
+                .border(2.dp, Color.Gray, CircleShape),
+            contentScale = ContentScale.Crop
+        )
+
+        Spacer(modifier = Modifier.width(16.dp))
+
         Row(
-            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.bunnyhopscottmascot),
-                contentDescription = "Profile Picture",
-                modifier = Modifier
-                    .size(90.dp)
-                    .clip(CircleShape)
-                    .border(2.dp, Color.Gray, CircleShape),
-                contentScale = ContentScale.Crop
-            )
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-//  ------ Statistika Milik User ----
-            Row(
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                StatItem("54", "Posts")
-                StatItem("834", "Followers")
-                StatItem("162", "Following")
-            }
+            StatItem("54", "Posts")
+            StatItem("834", "Followers")
+            StatItem("162", "Following")
         }
+    }
 
-        Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(8.dp))
 
-//  ------ Nama dan bio data user  ----
-        Text("SeaShanty", fontWeight = FontWeight.Bold, fontSize = 18.sp)
-        Text("Ocean-inspired clothing", fontSize = 14.sp)
-        Text("www.seashanty.com", color = Color.Blue, fontSize = 13.sp)
+    Text("SeaShanty", fontWeight = FontWeight.Bold, fontSize = 18.sp)
+    Text("Ocean-inspired clothing", fontSize = 14.sp)
+    Text("www.seashanty.com", color = Color.Blue, fontSize = 13.sp)
 
-        Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(8.dp))
 
-//  ------ Tombol Untuk Pemilik User  ----
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 4.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            OutlinedButton(
-                onClick = {},
-                modifier = Modifier.weight(1f)
-            ) { Text("Edit Profile") }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        OutlinedButton(
+            onClick = {},
+            modifier = Modifier.weight(1f)
+        ) { Text("Edit Profile") }
 
-            OutlinedButton(
-                onClick = {},
-                modifier = Modifier.weight(1f)
-            ) { Text("PIE") }
+        OutlinedButton(
+            onClick = {},
+            modifier = Modifier.weight(1f)
+        ) { Text("PIE") }
 
-            OutlinedButton(
-                onClick = {},
-                modifier = Modifier.weight(1f)
-            ) { Text("FEMBOY") }
-        }
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-//  ------ Highlights  ----
-        HighlightsSection()
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-//  ------ Tombol Untuk Semua User ----
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            TabButton("Posts", selectedTab) { selectedTab = "Posts" }
-            TabButton("Reels", selectedTab) { selectedTab = "Reels" }
-            TabButton("Tagged", selectedTab) { selectedTab = "Tagged" }
-        }
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-    //  ------ Isi Content Berdasarkan Tombol Diclick  ----
-        when (selectedTab) {
-            "Posts" -> PostGrid()
-            "Reels" -> ReelsSection()
-            "Tagged" -> TaggedSection()
-        }
+        OutlinedButton(
+            onClick = {},
+            modifier = Modifier.weight(1f)
+        ) { Text("FEMBOY") }
     }
 }
 
 
-//  ------ Styling Isi Untuk Statistika Milik User ----
+//  ------ Tombol Untuk Semua User ----
 @Composable
-fun StatItem(number: String, label: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = number, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-        Text(text = label, fontSize = 13.sp, color = Color.Gray)
+fun TabButton(
+    text: String,
+    selectedTab: String,
+    onClick: () -> Unit
+) {
+    val isSelected = text == selectedTab
+    TextButton(onClick = onClick) {
+        Text(
+            text,
+            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+            color = if (isSelected) Color.Black else Color.Gray
+        )
     }
 }
 
@@ -171,30 +140,107 @@ fun HighlightsSection() {
     }
 }
 
-
-//  ------ Tombol Untuk Semua User ----
+//  ------ Isi Konten Grid #1  ----
 @Composable
-fun TabButton(
-    text: String,
-    selectedTab: String,
-    onClick: () -> Unit
-) {
-    val isSelected = text == selectedTab
-    TextButton(onClick = onClick) {
-        Text(
-            text,
-            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-            color = if (isSelected) Color.Black else Color.Gray
-        )
+fun PostGrid() {
+    val posts = listOf(
+        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai
+    )
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(max = 2000.dp), // ✅ batasi tinggi agar tidak infinite scroll di dalam
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+        horizontalArrangement = Arrangement.spacedBy(2.dp)
+    ) {
+        items(posts) { post ->
+            Image(
+                painter = painterResource(id = post),
+                contentDescription = null,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
     }
 }
 
+//  ------ Isi Konten Grid #2  ----
 @Composable
-fun PostGrid() {
-    val posts = List(9) { R.drawable.bunnyhopscottmascot }
+fun ReelsSection() {
+    val posts = listOf(
+        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai
+    )
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(max = 2000.dp), // ✅ batasi tinggi agar tidak infinite scroll di dalam
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+        horizontalArrangement = Arrangement.spacedBy(2.dp)
+    ) {
+        items(posts) { post ->
+            Image(
+                painter = painterResource(id = post),
+                contentDescription = null,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .fillMaxWidth(),
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
+
+//  ------ Isi Konten Grid #3  ----
+@Composable
+fun TaggedSection() {
+    val posts = listOf(
+        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai
+    )
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(max = 2000.dp), // ✅ batasi tinggi agar tidak infinite scroll di dalam
         verticalArrangement = Arrangement.spacedBy(2.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
@@ -212,25 +258,59 @@ fun PostGrid() {
 }
 
 @Composable
-fun ReelsSection() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+fun ProfileScreen() {
+    var selectedTab by remember { mutableStateOf("Posts") }
+
+    LazyColumn( // ✅ scroll utama hanya ini
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Text("🎬 Reels kamu akan tampil di sini", color = Color.Gray)
+
+        // Bagian profil atas
+        item {
+            ProfileHeader()
+        }
+
+        // Highlights
+        item {
+            HighlightsSection()
+        }
+
+        // Tab tombol
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                TabButton("Posts", selectedTab) { selectedTab = "Posts" }
+                TabButton("Reels", selectedTab) { selectedTab = "Reels" }
+                TabButton("Tagged", selectedTab) { selectedTab = "Tagged" }
+            }
+        }
+
+        // Konten berdasarkan tab
+        item {
+            when (selectedTab) {
+                "Posts" -> PostGrid()
+                "Reels" -> ReelsSection()
+                "Tagged" -> TaggedSection()
+            }
+        }
     }
 }
 
+//  ------ Styling Isi Untuk Statistika Milik User ----
 @Composable
-fun TaggedSection() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text("🏷️ Postingan yang menandai kamu akan muncul di sini", color = Color.Gray)
+fun StatItem(number: String, label: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = number, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        Text(text = label, fontSize = 13.sp, color = Color.Gray)
     }
 }
 
+//  ------ Yang Akan dimunculkan saat dipanggil ----
 @Preview(showBackground = true)
 @Composable
 fun ProfilePreview() {

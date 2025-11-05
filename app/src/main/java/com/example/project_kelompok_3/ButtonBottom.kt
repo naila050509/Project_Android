@@ -41,30 +41,7 @@ data class BottomNavItem(
     val icon: @Composable () -> Unit
 )
 
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun InstagramTopBar() {
-    TopAppBar(
-        title = {
-            Text(
-                text = "???",
-                fontWeight = FontWeight.Bold,
-                fontSize = 12.sp
-            )
-        },
-
-        actions = {
-            IconButton(onClick = {}) {
-//                Icon(Icons.Outlined.FavoriteBorder, contentDescription = "Likes")
-            }
-            IconButton(onClick = {}) {
-                Icon(Icons.AutoMirrored.Outlined.Send, contentDescription = "Messages")
-            }
-        }
-    )
-}
-
+// ----- Top Bar Untuk Home Page -----
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopBar() {
@@ -96,6 +73,31 @@ fun HomeTopBar() {
     )
 }
 
+// ----- Top Bar Untuk Profile Instagram -----
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun InstagramTopBar() {
+    TopAppBar(
+        title = {
+            Text(
+                text = "SeaShanty",
+                fontWeight = FontWeight.Bold,
+                fontSize = 12.sp
+            )
+        },
+
+        actions = {
+            IconButton(onClick = {}) {
+                Icon(Icons.Outlined.FavoriteBorder, contentDescription = "Likes")
+            }
+            IconButton(onClick = {}) {
+                Icon(Icons.AutoMirrored.Outlined.Send, contentDescription = "Messages")
+            }
+        }
+    )
+}
+
+// ----- Bottom Bar Untuk Semuanya -----
 @Composable
 fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     var selectedTab by remember { mutableIntStateOf(0) }
@@ -106,7 +108,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
         BottomNavItem("Reels", { Icon(Icons.Outlined.VideoLibrary, contentDescription = "Reels") }),
         BottomNavItem("Profile", {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
+                painter = painterResource(id = R.drawable.bunnyhopscottmascot),
                 contentDescription = "Profile",
                 modifier = Modifier
                     .size(24.dp)
@@ -114,6 +116,8 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
             )
         })
     )
+
+    // ----- Yang Akan Dimunculkan -----
     Scaffold(
         modifier = modifier, // Ini cuman memanggil modifier supaya tidak ada warning
         topBar = {
