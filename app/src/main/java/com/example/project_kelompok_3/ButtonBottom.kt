@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Send
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.VideoLibrary
@@ -37,14 +36,14 @@ data class BottomNavItem(
     val icon: @Composable () -> Unit
 )
 
-// ----- Top Bar Untuk Profile Instagram -----
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InstagramTopBar() {
     TopAppBar(
         title = {
             Text(
-                text = "SeaShanty",
+                text = "???",
                 fontWeight = FontWeight.Bold,
                 fontSize = 12.sp
             )
@@ -52,7 +51,7 @@ fun InstagramTopBar() {
 
         actions = {
             IconButton(onClick = {}) {
-                Icon(Icons.Outlined.FavoriteBorder, contentDescription = "Likes")
+//                Icon(Icons.Outlined.FavoriteBorder, contentDescription = "Likes")
             }
             IconButton(onClick = {}) {
                 Icon(Icons.AutoMirrored.Outlined.Send, contentDescription = "Messages")
@@ -61,7 +60,7 @@ fun InstagramTopBar() {
     )
 }
 
-// ----- Bottom Bar Untuk Semuanya -----
+
 @Composable
 fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     var selectedTab by remember { mutableIntStateOf(0) }
@@ -72,7 +71,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
         BottomNavItem("Reels", { Icon(Icons.Outlined.VideoLibrary, contentDescription = "Reels") }),
         BottomNavItem("Profile", {
             Image(
-                painter = painterResource(id = R.drawable.bunnyhopscottmascot),
+                painter = painterResource(id = R.drawable.ic_launcher_background),
                 contentDescription = "Profile",
                 modifier = Modifier
                     .size(24.dp)
@@ -80,13 +79,11 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
             )
         })
     )
-
-    // ----- Yang Akan Dimunculkan -----
     Scaffold(
         modifier = modifier, // Ini cuman memanggil modifier supaya tidak ada warning
         topBar = {
-            when (selectedTab) {
-                3 -> InstagramTopBar()
+            if (selectedTab == 3) {
+                InstagramTopBar()
             }
         },
         bottomBar = {
@@ -104,7 +101,6 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (selectedTab) {
-
                 3 -> ProfileScreen()
             }
         }
