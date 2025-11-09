@@ -144,13 +144,13 @@ fun HighlightsSection() {
 @Composable
 fun PostGrid() {
     val posts = listOf(
-        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.sungai,
         R.drawable.bunnyhopscottmascot,
         R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
         R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
-        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.sungai,
         R.drawable.bunnyhopscottmascot,
         R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
@@ -162,7 +162,7 @@ fun PostGrid() {
         columns = GridCells.Fixed(3),
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(max = 2000.dp), // ✅ batasi tinggi agar tidak infinite scroll di dalam
+            .heightIn(max = 2000.dp), // batasi tinggi agar tidak infinite scroll di dalam
         verticalArrangement = Arrangement.spacedBy(2.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
@@ -183,13 +183,13 @@ fun PostGrid() {
 @Composable
 fun ReelsSection() {
     val posts = listOf(
-        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
-        R.drawable.bunnyhopscottmascot,
-        R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
         R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
-        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.sungai,
         R.drawable.bunnyhopscottmascot,
         R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
@@ -201,7 +201,7 @@ fun ReelsSection() {
         columns = GridCells.Fixed(3),
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(max = 2000.dp), // ✅ batasi tinggi agar tidak infinite scroll di dalam
+            .heightIn(max = 2000.dp), // batas tinggi agar tidak infinite scroll di dalam
         verticalArrangement = Arrangement.spacedBy(2.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
@@ -222,13 +222,13 @@ fun ReelsSection() {
 @Composable
 fun TaggedSection() {
     val posts = listOf(
-        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
-        R.drawable.bunnyhopscottmascot,
-        R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
         R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
-        R.drawable.sungai, // 🎁 ini gambar yang kamu sebutkan
+        R.drawable.sungai,
+        R.drawable.bunnyhopscottmascot,
+        R.drawable.sungai,
+        R.drawable.sungai,
         R.drawable.bunnyhopscottmascot,
         R.drawable.bunnyhopscottmascot,
         R.drawable.sungai,
@@ -240,7 +240,7 @@ fun TaggedSection() {
         columns = GridCells.Fixed(3),
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(max = 2000.dp), // ✅ batasi tinggi agar tidak infinite scroll di dalam
+            .heightIn(max = 2000.dp), // batasi tinggi agar tidak infinite scroll di dalam
         verticalArrangement = Arrangement.spacedBy(2.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
@@ -261,7 +261,7 @@ fun TaggedSection() {
 fun ProfileScreen() {
     var selectedTab by remember { mutableStateOf("Posts") }
 
-    LazyColumn( // ✅ scroll utama hanya ini
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
