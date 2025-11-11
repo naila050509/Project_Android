@@ -11,10 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.outlined.AddBox
-import androidx.compose.material.icons.outlined.ArrowDropDown
-import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.automirrored.outlined.Send
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Search
@@ -49,13 +46,14 @@ data class BottomNavItem(
     val icon: @Composable () -> Unit
 )
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopBar() {
     TopAppBar(
         title = {
             Text(
-                text = "Home",
+                text = "???",
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp
             )
@@ -126,8 +124,8 @@ fun InstagramTopBar(
             }
         },
         actions = {
-            IconButton(onClick = { /* tambah posting */ }) {
-                Icon(Icons.Outlined.AddBox, contentDescription = "Add")
+            IconButton(onClick = {}) {
+//                Icon(Icons.Outlined.FavoriteBorder, contentDescription = "Likes")
             }
             IconButton(onClick = { /* buka menu */ }) {
                 Icon(Icons.Outlined.Menu, contentDescription = "Menu")
@@ -137,9 +135,6 @@ fun InstagramTopBar(
 }
 
 
-
-
-// ----- Bottom Bar Untuk Semuanya -----
 @Composable
 fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     var selectedTab by remember { mutableIntStateOf(0) }
@@ -156,7 +151,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
         BottomNavItem("Reels", { Icon(Icons.Outlined.VideoLibrary, contentDescription = "Reels") }),
         BottomNavItem("Profile", {
             Image(
-                painter = painterResource(id = R.drawable.bunnyhopscottmascot),
+                painter = painterResource(id = R.drawable.ic_launcher_background),
                 contentDescription = "Profile",
                 modifier = Modifier
                     .size(24.dp)
@@ -164,17 +159,11 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
             )
         })
     )
-
     Scaffold(
         modifier = modifier,
         topBar = {
-            when (selectedTab) {
-                0 -> HomeTopBar()
-                3 -> InstagramTopBar(
-                    selectedAccount = selectedAccount,
-                    onAccountSelected = { selectedAccount = it },
-                    accounts = accounts
-                )
+            if (selectedTab == 3) {
+                InstagramTopBar()
             }
         },
         bottomBar = {
