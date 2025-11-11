@@ -18,6 +18,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.automirrored.outlined.Send
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.MoreVert
@@ -30,6 +32,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -240,7 +243,7 @@ fun ActionButtons() {
             issend = !issend
         }) {
             Icon(
-                imageVector = if (issend) Icons.Filled.Send else Icons.Outlined.Send,
+                imageVector = if (issend) Icons.AutoMirrored.Filled.Send else Icons.AutoMirrored.Outlined.Send,
                 contentDescription = "Send",
                 tint = if (issend) Color(0xFF2196F3) else Color.Black
             )
@@ -251,7 +254,7 @@ fun ActionButtons() {
 
         Spacer(modifier = Modifier.weight(1f))
 
-        var saveCount by remember { mutableStateOf(0) }
+        var saveCount by remember { mutableIntStateOf(0) }
         var isSaved by remember { mutableStateOf(false) }
 
         IconButton(onClick = {
