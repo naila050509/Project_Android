@@ -11,7 +11,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.automirrored.outlined.Send
+import androidx.compose.material.icons.outlined.ArrowDropDown
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Search
@@ -37,6 +40,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,12 +55,16 @@ data class BottomNavItem(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopBar() {
+
+    val billabong = FontFamily(Font(R.font.billabong, FontWeight.Bold))
+
     TopAppBar(
         title = {
             Text(
-                text = "???",
+                text = "Instagram",
                 fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
+                fontFamily = billabong,
+                fontSize = 30.sp
             )
         },
         actions = {
@@ -77,8 +86,6 @@ fun HomeTopBar() {
         }
     )
 }
-
-
 
 // ----- Top Bar Untuk Profile Instagram -----
 @OptIn(ExperimentalMaterial3Api::class)
@@ -162,8 +169,13 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier,
         topBar = {
-            if (selectedTab == 3) {
-                InstagramTopBar()
+            when (selectedTab) {
+                0 -> HomeTopBar() // 🟢 tampilkan top bar untuk halaman Home
+                3 -> InstagramTopBar(
+                    selectedAccount = selectedAccount,
+                    onAccountSelected = { selectedAccount = it },
+                    accounts = accounts
+                ) // 🟣 tampilkan top bar untuk halaman Profile
             }
         },
         bottomBar = {
@@ -182,6 +194,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
         Box(modifier = Modifier.padding(innerPadding)) {
             when (selectedTab) {
                 0 -> InstagramApp()
+                1 -> SearchScreen()
                 3 -> ProfileScreen(selectedAccount = selectedAccount)
             }
         }
