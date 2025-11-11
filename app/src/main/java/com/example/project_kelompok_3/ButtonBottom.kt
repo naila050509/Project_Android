@@ -1,22 +1,14 @@
 package com.example.project_kelompok_3
 
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Send
-import androidx.compose.material.icons.filled.Send
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.VideoLibrary
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,7 +17,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SegmentedButtonDefaults.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -69,38 +60,6 @@ fun InstagramTopBar() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun HomeTopBar() {
-    TopAppBar(
-        title = {
-            Text(
-                text = "Home",
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
-            )
-        },
-        actions = {
-            Row {
-                IconButton(onClick = { /* aksi Likes */ }) {
-                    Icon(
-                        Icons.Outlined.FavoriteBorder,
-                        contentDescription = "Likes"
-                    )
-                }
-                Spacer(modifier = Modifier.width(2.dp)) // jarak antar icon
-                IconButton(onClick = { /* aksi Send */ }) {
-                    Icon(
-                        Icons.Filled.Send,
-                        contentDescription = "Send"
-                    )
-                }
-            }
-        }
-    )
-}
-
-
 
 @Composable
 fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
@@ -123,9 +82,8 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier, // Ini cuman memanggil modifier supaya tidak ada warning
         topBar = {
-            when (selectedTab) {
-                0 -> HomeTopBar()         // ✅ Top bar untuk Home
-                3 -> InstagramTopBar()    // ✅ Top bar untuk Profile
+            if (selectedTab == 3) {
+                InstagramTopBar()
             }
         },
         bottomBar = {
@@ -143,7 +101,6 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             when (selectedTab) {
-                0 -> InstagramApp()
                 3 -> ProfileScreen()
             }
         }
