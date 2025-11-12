@@ -198,7 +198,7 @@ fun PostList() {
                 username = "bloomysilly",
                 location = "Jakarta, Indonesia",
                 images = listOf(R.drawable.senja, R.drawable.sungai, R.drawable.senja),
-                caption = "Pemberian Modal Usaha Bergulir Bantuan Pemerintah Pengembangan Projek Kreatif dan Kewirausahaan 2025"
+                caption = "Pengembangan Projek Kreatif dan Kewirausahaan 2025"
             )
         }
 
