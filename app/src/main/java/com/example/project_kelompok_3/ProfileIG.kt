@@ -106,7 +106,9 @@ fun HighlightsSection(selectedAccount: String) {
         }
     }
 
-    LazyRow {
+    LazyRow(
+    horizontalArrangement = Arrangement.spacedBy(12.dp), // 🔹 jarak antar item
+    ) {
         items(highlights) { (imageRes, label) ->
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Image(
@@ -117,6 +119,7 @@ fun HighlightsSection(selectedAccount: String) {
                         .clip(CircleShape)
                         .border(2.dp, Color.Gray, CircleShape)
                 )
+                Spacer(modifier = Modifier.height(4.dp)) // jarak teks dari gambar
                 Text(label, fontSize = 12.sp)
             }
         }

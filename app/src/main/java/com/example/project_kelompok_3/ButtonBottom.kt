@@ -198,7 +198,12 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
             }
         }
     ) { innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding)) {
+        Box(modifier = Modifier
+            .padding(
+                top = innerPadding.calculateTopPadding() -16.dp,
+                bottom = innerPadding.calculateBottomPadding()
+            )
+        ) {
             when (selectedTab) {
                 0 -> InstagramApp()
                 1 -> SearchScreen()

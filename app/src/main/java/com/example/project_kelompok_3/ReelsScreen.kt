@@ -42,19 +42,18 @@ fun ReelsScreen() {
 fun ReelItem(reel: ReelVideo) {
     val context = LocalContext.current
 
-    val exoPlayer = remember {
+    // 🔹 Gunakan key unik agar ExoPlayer tidak "nabrak" instance lain di LazyColumn
+    val exoPlayer = remember(reel.videoUrl) {
         ExoPlayer.Builder(context).build().apply {
             val mediaItem = MediaItem.fromUri(Uri.parse(reel.videoUrl))
             setMediaItem(mediaItem)
             prepare()
-            playWhenReady = true
+            playWhenReady = false // biar gak langsung auto-play semua
         }
     }
 
-    DisposableEffect(Unit) {
-        onDispose {
-            exoPlayer.release()
-        }
+    DisposableEffect(exoPlayer) {
+        onDispose { exoPlayer.release() }
     }
 
     Box(
@@ -67,7 +66,7 @@ fun ReelItem(reel: ReelVideo) {
             factory = { ctx ->
                 PlayerView(ctx).apply {
                     player = exoPlayer
-                    useController = false
+                    useController = true
                 }
             },
             modifier = Modifier.fillMaxSize()
