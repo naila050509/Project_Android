@@ -202,6 +202,7 @@ fun InstagramBottomNavigation(modifier: Modifier = Modifier) {
             when (selectedTab) {
                 0 -> InstagramApp()
                 1 -> SearchScreen()
+                2 -> ReelsScreen()
                 3 -> ProfileScreen(selectedAccount = selectedAccount)
             }
         }
